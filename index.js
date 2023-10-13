@@ -4,7 +4,7 @@ const yaml = require('js-yaml');
 const lodash = require('lodash');
 
 const pathToFile = core.getInput('path-to-file');
-const environments = core.getMultilineInput('environments');
+const environment = core.getInput('environment');
 
 const globalEnvironment = 'global';
 
@@ -14,7 +14,7 @@ const file = fs.readFileSync(`/github/workspace/${pathToFile}`, 'utf-8');
 // convert from yaml to JS
 const config = yaml.load(file);
 
-const allEnvironments = [globalEnvironment, ...environments];
+const allEnvironments = [globalEnvironment, environment];
 
 const configs = allEnvironments.map(configToMerge => config[configToMerge] || {});
 const mergedConfig = lodash.merge(configs);
