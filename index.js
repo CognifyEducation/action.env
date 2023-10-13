@@ -9,7 +9,7 @@ const environment = core.getInput('environment');
 const globalEnvironment = 'global';
 
 // read config file
-const file = fs.readFileSync(`/github/workspace/${pathToFile}`, 'utf-8');
+const file = fs.readFileSync(pathToFile, 'utf-8');
 
 // convert from yaml to JS
 const config = yaml.load(file);
