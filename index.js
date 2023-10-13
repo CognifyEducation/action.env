@@ -14,6 +14,8 @@ const file = fs.readFileSync(pathToFile, 'utf-8');
 // convert from yaml to JS
 const config = yaml.load(file);
 
+core.debug(`The config loaded from ${pathToFile} is ${JSON.stringify(config)}`);
+
 const allEnvironments = [globalEnvironment, environment];
 
 const configs = allEnvironments.map(configToMerge => config[configToMerge] || {});
