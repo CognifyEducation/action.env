@@ -1,0 +1,12 @@
+name: 'action.env'
+description: 'A GitHub Action for setting environment variables from YAML files'
+inputs:
+  path-to-file: # id of input
+    description: 'The path to the file to load environment variables from'
+    required: true
+  environment:
+    description: 'The current environment of the running action'
+    required: false
+runs:
+  using: 'node20'
+  main: 'index.js'
