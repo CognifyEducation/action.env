@@ -18,8 +18,12 @@ core.debug(`The config loaded from ${pathToFile} is ${JSON.stringify(config)}`);
 
 const allEnvironments = [globalEnvironment, environment];
 
+core.debug(`The environments to read are ${allEnvironments.toString()}`);
 const configs = allEnvironments.map(configToMerge => config[configToMerge] || {});
-const mergedConfig = lodash.merge(configs);
+
+core.debug(`The mapped configs are ${configs.toString()}`);
+
+const mergedConfig = lodash.merge(...configs);
 
 core.debug(`Final merged config is ${JSON.stringify(mergedConfig)}`);
 
